@@ -1,0 +1,1549 @@
+@charset "utf-8";
+/* =========================================================
+   style.css - SiMagang Modul Admin
+   Warna dan font mengikuti Panduan Gaya Visual SRS (Bab 6.1):
+   navy #001460, putih #FFFFFF, font Poppins, radius 8-12px.
+   ========================================================= */
+
+/* ---------- Font Poppins (file lokal di vendor/poppins) ---------- */
+@font-face {
+    font-family: "Poppins";
+    font-weight: 400;
+    src: url("../vendor/poppins/poppins-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Poppins";
+    font-weight: 500;
+    src: url("../vendor/poppins/poppins-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Poppins";
+    font-weight: 600;
+    src: url("../vendor/poppins/poppins-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Poppins";
+    font-weight: 700;
+    src: url("../vendor/poppins/poppins-latin-700-normal.woff2") format("woff2");
+}
+
+/* ---------- Dasar ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", Verdana, Arial, sans-serif;
+    font-size: 15px;
+    color: #1F2433;
+    background: #F4F6FB;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 600;
+    color: #001460;
+}
+
+a {
+    color: #001460;
+}
+
+code {
+    background: #EEF1F9;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.clearfloat {
+    clear: both;
+    height: 0;
+    font-size: 1px;
+    line-height: 0;
+}
+
+/* ---------- Sidebar (position fixed di kiri) ---------- */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: #001460;
+    color: #FFFFFF;
+    padding: 22px 16px;
+    z-index: 30;
+    overflow-y: auto;
+    transition: left 0.25s;
+}
+
+#sidebar .brand {
+    padding: 0 6px 22px 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 18px;
+}
+
+#sidebar .brand img {
+    float: left;
+    margin-right: 10px;
+}
+
+#sidebar .brand strong {
+    display: block;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+#sidebar .brand small {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+.menu-judul {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin: 0 0 8px 8px;
+}
+
+/* menu dari list (materi CSS Lists) */
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.menu li a {
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 11px 14px;
+    margin-bottom: 4px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+ul.menu li a i {
+    width: 22px;
+    text-align: center;
+    margin-right: 6px;
+}
+
+ul.menu li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+ul.menu li a.aktif {
+    background: #FFFFFF;
+    color: #001460;
+    font-weight: 600;
+}
+
+.sidebar-bawah {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 20px;
+}
+
+.btn-sidebar {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    padding: 9px 14px;
+    margin-top: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-sidebar:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#overlay {
+    display: none;
+}
+
+/* ---------- Area utama ---------- */
+#utama {
+    margin-left: 250px;
+    min-height: 100vh;
+}
+
+#header {
+    background: #FFFFFF;
+    padding: 14px 28px;
+    border-bottom: 1px solid #E3E7F0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: 68px;
+}
+
+#btnMenu {
+    display: none;
+    float: left;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #001460;
+    margin: 6px 12px 0 0;
+    cursor: pointer;
+}
+
+#judulHalaman {
+    float: left;
+    font-size: 22px;
+    line-height: 40px;
+}
+
+.profil {
+    float: right;
+}
+
+.profil img {
+    float: left;
+    margin-right: 10px;
+}
+
+.profil-teks {
+    float: left;
+    line-height: 1.25;
+}
+
+.profil-teks strong {
+    display: block;
+    font-size: 14px;
+}
+
+.profil-teks small {
+    font-size: 12px;
+    color: #6B7280;
+}
+
+#konten {
+    padding: 26px 28px;
+}
+
+#footer {
+    padding: 14px 28px 24px 28px;
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.memuat {
+    color: #6B7280;
+}
+
+/* ---------- Komponen umum ---------- */
+.kartu {
+    background: #FFFFFF;
+    border: 1px solid #E3E7F0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.kartu-judul {
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+
+.kartu-judul h2 {
+    float: left;
+    font-size: 17px;
+}
+
+.kartu-judul a,
+.kartu-judul .btn {
+    float: right;
+    font-size: 13px;
+}
+
+.teks-kecil {
+    font-size: 13px;
+    color: #6B7280;
+    margin: -6px 0 10px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1.5px solid #001460;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    background: #001460;
+    color: #FFFFFF;
+}
+
+.btn:hover {
+    background: #0A2385;
+}
+
+/* tombol sekunder: latar putih, border dan teks biru (SRS) */
+.btn-sekunder {
+    background: #FFFFFF;
+    color: #001460;
+}
+
+.btn-sekunder:hover {
+    background: #EEF1F9;
+}
+
+.btn-kuning {
+    background: #F5B700;
+    border-color: #F5B700;
+    color: #001460;
+}
+
+.btn-kuning:hover {
+    background: #FFC928;
+}
+
+.btn-kecil {
+    white-space: nowrap;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 8px;
+    margin: 2px 0;
+}
+
+.btn-bahaya {
+    background: #FFFFFF;
+    color: #D93A3A;
+    border-color: #D93A3A;
+}
+
+.btn-bahaya:hover {
+    background: #FDECEC;
+}
+
+.btn-sukses {
+    background: #FFFFFF;
+    color: #1E9E61;
+    border-color: #1E9E61;
+}
+
+.btn-sukses:hover {
+    background: #E7F6EE;
+}
+
+/* badge role dan status */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.role-mahasiswa  { background: #E6EAF5; color: #001460; }
+.role-pembimbing { background: #FFF4D1; color: #8A6400; }
+.role-dosen      { background: #E7F6EE; color: #17794A; }
+.role-admin      { background: #F0E8FB; color: #6A3BB0; }
+
+.status-aktif    { background: #E7F6EE; color: #17794A; }
+.status-nonaktif { background: #FDECEC; color: #B42828; }
+.status-netral   { background: #EEF0F4; color: #555D6E; }
+
+/* ---------- Tabel ---------- */
+.tabel-wrap {
+    width: 100%;
+    overflow-x: auto;   /* di HP tabel bisa digeser ke samping */
+}
+
+table.tabel {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+table.tabel th {
+    background: #F4F6FB;
+    color: #4A5163;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 12px;
+    white-space: nowrap;
+}
+
+table.tabel th:first-child { border-radius: 8px 0 0 8px; }
+table.tabel th:last-child  { border-radius: 0 8px 8px 0; }
+
+table.tabel td {
+    padding: 11px 12px;
+    border-bottom: 1px solid #EEF0F4;
+    vertical-align: middle;
+}
+
+table.tabel tbody tr:hover {
+    background: #FAFBFE;
+}
+
+table.tabel tr.baru {
+    background: #FFF8DE;
+}
+
+.nama-utama {
+    font-weight: 500;
+}
+
+.sub {
+    display: block;
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.kosong {
+    text-align: center;
+    color: #6B7280;
+    padding: 24px !important;
+}
+
+/* ---------- Dashboard ---------- */
+/* Dua kolom: kartu ringkasan di kiri (30%), periode & tab di kanan (68%) */
+.dash-kiri {
+    float: left;
+    width: 30%;
+}
+
+.dash-kanan {
+    float: right;
+    width: 68%;
+}
+
+/* Kartu ringkasan (kolom kiri) */
+.kartu-ringkasan {
+    padding: 0;
+    overflow: hidden;
+}
+
+.ringkasan-gambar {
+    background: #001460;
+    text-align: center;
+    padding: 22px 20px 16px 20px;
+}
+
+.ringkasan-gambar img {
+    width: 82%;
+    max-width: 250px;
+}
+
+.ringkasan-isi {
+    padding: 20px;
+}
+
+.ringkasan-isi .tanggal {
+    font-size: 13px;
+    color: #6B7280;
+    margin: 0;
+}
+
+.ringkasan-isi h2 {
+    font-size: 22px;
+    margin: 2px 0 16px 0;
+}
+
+ul.daftar-angka {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.daftar-angka li {
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+ul.daftar-angka .ikon {
+    float: left;
+    margin-right: 12px;
+}
+
+ul.daftar-angka span.label {
+    float: left;
+    line-height: 42px;
+}
+
+ul.daftar-angka strong {
+    float: right;
+    line-height: 42px;
+    font-size: 21px;
+    color: #001460;
+}
+
+.ikon {
+    font-size: 18px;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.ikon.biru   { background: #E6EAF5; color: #001460; }
+.ikon.kuning { background: #FFF4D1; color: #B07D00; }
+.ikon.hijau  { background: #E7F6EE; color: #1E9E61; }
+.ikon.ungu   { background: #F0E8FB; color: #6A3BB0; }
+
+/* Komposisi akun: satu bar dibagi per role (lebar diisi JavaScript) */
+.komposisi {
+    border-top: 1px solid #EEF0F4;
+    margin-top: 6px;
+    padding-top: 16px;
+}
+
+.komposisi-judul {
+    overflow: hidden;
+}
+
+.komposisi-judul b {
+    float: left;
+    color: #001460;
+}
+
+.komposisi-judul span {
+    float: right;
+    font-size: 13px;
+    color: #6B7280;
+}
+
+.bar-komposisi {
+    height: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #EEF1F9;
+    margin: 10px 0;
+}
+
+.bar-komposisi span {
+    float: left;
+    height: 100%;
+    transition: width 0.6s;
+}
+
+ul.legenda {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+ul.legenda li {
+    float: left;
+    width: 50%;
+    margin-bottom: 4px;
+}
+
+ul.legenda li i {
+    font-size: 9px;
+    margin-right: 4px;
+}
+
+.warna-mahasiswa  { background: #001460; color: #001460; }
+.warna-pembimbing { background: #F5B700; color: #B07D00; }
+.warna-dosen      { background: #1E9E61; color: #1E9E61; }
+.warna-admin      { background: #6A3BB0; color: #6A3BB0; }
+
+ul.legenda li.warna-mahasiswa,
+ul.legenda li.warna-pembimbing,
+ul.legenda li.warna-dosen,
+ul.legenda li.warna-admin {
+    background: none;
+}
+
+.btn-penuh {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 18px;
+}
+
+/* Kartu periode aktif (kolom kanan, 2 per baris) */
+.kartu-periode {
+    float: left;
+    width: 48.5%;
+    margin-right: 3%;
+    border-top: 4px solid #F5B700;
+}
+
+.kartu-periode:nth-child(2n) {
+    margin-right: 0;
+}
+
+.kartu-periode.tunggal {
+    width: 100%;
+    margin-right: 0;
+}
+
+.kartu-periode .label-kecil {
+    font-size: 13px;
+    color: #6B7280;
+    margin: 0;
+}
+
+.kartu-periode h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.kartu-periode .rentang {
+    font-size: 13px;
+    color: #6B7280;
+    margin: 4px 0 10px 0;
+}
+
+.bar-progres {
+    height: 8px;
+    background: #EEF1F9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.bar-progres span {
+    display: block;
+    height: 100%;
+    background: #F5B700;
+    border-radius: 8px;
+    transition: width 0.8s;
+}
+
+.kartu-periode .keterangan {
+    font-size: 13px;
+    color: #6B7280;
+    margin: 6px 0 0 0;
+}
+
+/* Tab: Assignment Terbaru / Belum Punya Assignment */
+.tab-menu {
+    border-bottom: 1px solid #EEF0F4;
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+
+.tab-menu button {
+    float: left;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #6B7280;
+    cursor: pointer;
+}
+
+.tab-menu button:hover {
+    color: #001460;
+}
+
+.tab-menu button.aktif {
+    border-bottom-color: #001460;
+    color: #001460;
+    font-weight: 600;
+}
+
+.tab-menu .jumlah-merah {
+    display: inline-block;
+    min-width: 22px;
+    padding: 1px 7px;
+    border-radius: 20px;
+    background: #FDECEC;
+    color: #B42828;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.aktif {
+    display: block;
+}
+
+.nama-inisial {
+    overflow: hidden;   /* teks rapi di samping inisial walau terlipat */
+}
+
+td.kolom-nama {
+    min-width: 190px;
+}
+
+.inisial {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    float: left;
+}
+
+/* ---------- Chip (tombol filter kecil) ---------- */
+.chip {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 0 4px 6px 0;
+    border-radius: 9px;
+    border: 1.5px solid #E3E7F0;
+    background: #FFFFFF;
+    font-family: inherit;
+    font-size: 12px;
+    color: #1F2433;
+    cursor: pointer;
+}
+
+.chip b {
+    color: #001460;
+    margin-left: 4px;
+}
+
+.chip:hover {
+    border-color: #001460;
+}
+
+.chip.aktif {
+    background: #001460;
+    border-color: #001460;
+    color: #FFFFFF;
+}
+
+.chip.aktif b {
+    color: #F5B700;
+}
+
+/* ---------- Kelola Akun: daftar (kiri) + detail (kanan) ---------- */
+.akun-kiri {
+    float: left;
+    width: 34%;
+}
+
+.akun-kanan {
+    float: right;
+    width: 64%;
+}
+
+.daftar-akun-kartu {
+    padding: 16px;
+}
+
+.cari {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.cari i {
+    position: absolute;
+    left: 12px;
+    top: 13px;
+    color: #9AA1B1;
+}
+
+.cari input[type="text"] {
+    padding-left: 36px;
+}
+
+.filter-role {
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+/* lima tombol role dibagi rata, angka di atas label */
+.filter-role .chip {
+    float: left;
+    width: 19.2%;
+    margin: 0 1% 0 0;
+    padding: 6px 0;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.filter-role .chip:last-child {
+    margin-right: 0;
+}
+
+.filter-role .chip b {
+    display: block;
+    margin: 0;
+    font-size: 15px;
+}
+
+#filterStatus {
+    margin-bottom: 8px;
+}
+
+.info-jumlah {
+    font-size: 12px;
+    color: #6B7280;
+    margin: 0 0 8px 2px;
+}
+
+ul.daftar-akun {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    max-height: 430px;
+    overflow-y: auto;
+}
+
+ul.daftar-akun li {
+    overflow: hidden;
+    padding: 10px 12px;
+    margin-bottom: 4px;
+    border-radius: 10px;
+    border-left: 4px solid transparent;
+    cursor: pointer;
+}
+
+ul.daftar-akun li:hover {
+    background: #F7F8FC;
+}
+
+ul.daftar-akun li.dipilih {
+    background: #EEF1F9;
+    border-left-color: #001460;
+}
+
+ul.daftar-akun li.kosong-daftar {
+    text-align: center;
+    color: #6B7280;
+    cursor: default;
+    padding: 24px 0;
+}
+
+.titik {
+    float: right;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    margin: 13px 0 0 8px;
+}
+
+.titik.aktif    { background: #1E9E61; }
+.titik.nonaktif { background: #D93A3A; }
+
+.detail-akun {
+    padding: 0;
+    overflow: hidden;
+}
+
+.detail-banner {
+    height: 90px;
+    background: #001460;
+}
+
+.detail-isi {
+    padding: 0 28px 28px 28px;
+}
+
+.avatar-besar {
+    display: inline-block;
+    width: 86px;
+    height: 86px;
+    line-height: 78px;
+    font-size: 26px;
+    font-weight: 600;
+    border-radius: 50%;
+    border: 4px solid #FFFFFF;
+    margin-top: -43px;
+}
+
+.detail-kepala {
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.detail-nama {
+    float: left;
+}
+
+.detail-nama h2 {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.detail-status {
+    float: right;
+    text-align: right;
+}
+
+.detail-status .sub {
+    margin-bottom: 6px;
+}
+
+/* saklar on/off untuk status akun */
+.saklar {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    border: none;
+    border-radius: 20px;
+    background: #CBD2E0;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.saklar span {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    transition: left 0.2s;
+}
+
+.saklar.nyala {
+    background: #1E9E61;
+}
+
+.saklar.nyala span {
+    left: 23px;
+}
+
+.teks-hijau { color: #1E9E61; }
+.teks-merah { color: #D93A3A; }
+
+ul.detail-info {
+    list-style-type: none;
+    margin: 22px 0;
+    padding: 18px 18px 6px 18px;
+    background: #F4F6FB;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+ul.detail-info li {
+    float: left;
+    width: 50%;
+    padding-right: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+ul.detail-info li span {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: #6B7280;
+}
+
+.detail-isi h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.kotak-magang {
+    border: 1px solid #E3E7F0;
+    border-left: 4px solid #F5B700;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.kotak-magang b {
+    color: #001460;
+}
+
+.kotak-magang.selesai {
+    border-left-color: #CBD2E0;
+}
+
+.kotak-magang.kosong-magang {
+    border-left-color: #D5DBE8;
+    color: #6B7280;
+}
+
+.detail-aksi {
+    margin-top: 20px;
+}
+
+.detail-kosong {
+    text-align: center;
+    padding: 50px 20px;
+    color: #6B7280;
+}
+
+.detail-kosong img {
+    width: 200px;
+    background: #001460;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+/* ---------- Periode & Assignment: form kiri, daftar kanan ---------- */
+.pa-kiri {
+    float: left;
+    width: 36%;
+}
+
+.pa-kanan {
+    float: right;
+    width: 62%;
+}
+
+/* form tetap terlihat saat daftar di kanan di-scroll */
+.form-tempel {
+    position: sticky;
+    top: 88px;
+    border-top: 4px solid #F5B700;
+}
+
+.kartu-form .form-grup {
+    margin-bottom: 12px;
+}
+
+.durasi {
+    clear: both;
+    margin: -4px 1.5% 12px 1.5%;
+    font-size: 13px;
+    color: #1E9E61;
+}
+
+.durasi:empty {
+    display: none;
+}
+
+/* kartu periode kecil, 3 per baris */
+.baris-periode {
+    margin: 0 -1%;
+}
+
+.kartu-periode-mini {
+    float: left;
+    width: 31.3%;
+    margin: 0 1% 12px 1%;
+    padding: 14px;
+    border-top: 4px solid #001460;
+    cursor: pointer;
+    min-height: 120px;
+}
+
+.kartu-periode-mini:hover {
+    border-color: #001460;
+}
+
+.kartu-periode-mini.dipilih {
+    box-shadow: 0 0 0 3px rgba(245, 183, 0, 0.5);
+}
+
+.kartu-periode-mini.selesai {
+    opacity: 0.7;
+}
+
+.kartu-periode-mini .label-status {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6B7280;
+}
+
+.kartu-periode-mini b {
+    display: block;
+    color: #001460;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.kartu-periode-mini .jumlah {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1E9E61;
+}
+
+.petunjuk-periode {
+    margin: 0 0 14px 2px;
+}
+
+/* satu kartu per periode berisi daftar mahasiswa */
+.grup-periode {
+    padding: 18px 20px 8px 20px;
+}
+
+.grup-judul {
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.grup-judul b {
+    float: left;
+    color: #001460;
+}
+
+.grup-judul .sub {
+    float: right;
+    font-size: 13px;
+}
+
+.kotak-warna {
+    float: left;
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    margin: 6px 8px 0 0;
+}
+
+ul.daftar-grup {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.daftar-grup li {
+    overflow: hidden;
+    padding: 12px 0;
+    border-top: 1px solid #EEF0F4;
+}
+
+ul.daftar-grup li.baru {
+    background: #FFF8DE;
+    margin: 0 -20px;
+    padding: 12px 20px;
+}
+
+.pembimbing-kanan {
+    float: right;
+    text-align: right;
+    font-size: 12px;
+    color: #6B7280;
+    margin-left: 10px;
+}
+
+.pembimbing-kanan span {
+    display: block;
+}
+
+.pembimbing-kanan i {
+    width: 16px;
+}
+
+.pembimbing-bawah {
+    display: none !important;
+    margin-top: 4px;
+}
+
+/* ---------- Form ---------- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #D5DBE8;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #1F2433;
+    background: #FFFFFF;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #001460;
+}
+
+.form-baris {
+    margin: 0 -1.5%;
+    overflow: hidden;
+}
+
+.form-grup {
+    float: left;
+    width: 47%;
+    margin: 0 1.5% 16px 1.5%;
+}
+
+.form-grup.penuh {
+    width: 97%;
+}
+
+.form-grup label {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.form-grup label .wajib {
+    color: #D93A3A;
+}
+
+.petunjuk {
+    display: block;
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 5px;
+}
+
+/* tampilan field yang tidak valid */
+.form-grup.salah input,
+.form-grup.salah select {
+    border-color: #D93A3A;
+    background: #FFF8F8;
+}
+
+.pesan-salah {
+    display: block;
+    color: #D93A3A;
+    font-size: 12px;
+    margin-top: 5px;
+    min-height: 0;
+}
+
+.pesan-salah:empty {
+    display: none;
+}
+
+.kotak-password {
+    position: relative;
+}
+
+.kotak-password button {
+    position: absolute;
+    right: 8px;
+    top: 7px;
+    border: none;
+    background: none;
+    color: #6B7280;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 4px 6px;
+}
+
+.checkbox-baris label {
+    display: inline;
+    font-weight: 400;
+}
+
+.ringkasan-salah {
+    display: none;
+    background: #FDECEC;
+    color: #B42828;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.info-periode {
+    display: none;
+    clear: both;
+    background: #FFF8DE;
+    border-left: 4px solid #F5B700;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin: 0 1.5% 16px 1.5%;
+}
+
+.aksi-form {
+    text-align: right;
+    border-top: 1px solid #EEF0F4;
+    padding-top: 16px;
+}
+
+.aksi-form .btn {
+    margin-left: 8px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.kartu-form h2 {
+    font-size: 17px;
+}
+
+.kartu-form .kartu-judul p {
+    clear: both;
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    color: #6B7280;
+}
+
+/* ---------- Modal (position fixed + z-index) ---------- */
+.modal-latar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 10, 40, 0.5);
+    z-index: 50;
+}
+
+.modal-latar.tampil {
+    display: block;
+}
+
+.modal {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    margin: 12vh auto 0 auto;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+}
+
+.modal h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.modal p {
+    font-size: 14px;
+    color: #4A5163;
+}
+
+.password-sementara {
+    display: block;
+    font-family: "Courier New", monospace;
+    font-size: 22px;
+    letter-spacing: 2px;
+    background: #F4F6FB;
+    border: 1.5px dashed #001460;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 14px 0;
+    color: #001460;
+}
+
+/* ---------- Toast ---------- */
+#toast {
+    position: fixed;
+    right: 24px;
+    bottom: -100px;
+    max-width: 360px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 14px;
+    z-index: 60;
+    transition: bottom 0.3s;
+}
+
+#toast.tampil      { bottom: 24px; }
+#toast.sukses      { background: #1E9E61; }
+#toast.gagal       { background: #D93A3A; }
+#toast.info        { background: #001460; }
+
+.pesan-error h2 {
+    color: #D93A3A;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Tablet / laptop kecil */
+@media screen and (max-width: 1100px) {
+    /* dashboard: kolom kiri dan kanan jadi bertumpuk */
+    .dash-kiri,
+    .dash-kanan {
+        float: none;
+        width: 100%;
+    }
+
+    .ringkasan-gambar img {
+        width: 60%;
+        max-width: 220px;
+    }
+
+    /* kelola akun: daftar di atas, detail di bawah */
+    .akun-kiri,
+    .akun-kanan {
+        float: none;
+        width: 100%;
+    }
+
+    ul.daftar-akun {
+        max-height: 280px;
+    }
+
+    /* periode & assignment: form di atas, daftar di bawah */
+    .pa-kiri,
+    .pa-kanan {
+        float: none;
+        width: 100%;
+    }
+
+    .form-tempel {
+        position: static;
+    }
+}
+
+/* HP: sidebar disembunyikan, muncul lewat tombol menu */
+@media screen and (max-width: 768px) {
+    #sidebar {
+        left: -270px;
+    }
+
+    #sidebar.terbuka {
+        left: 0;
+    }
+
+    #overlay.tampil {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 10, 40, 0.5);
+        z-index: 25;
+    }
+
+    #utama {
+        margin-left: 0;
+    }
+
+    #btnMenu {
+        display: block;
+    }
+
+    #header {
+        padding: 12px 16px;
+        height: 62px;
+    }
+
+    #judulHalaman {
+        font-size: 18px;
+        line-height: 38px;
+    }
+
+    .profil-teks {
+        display: none;
+    }
+
+    #konten {
+        padding: 18px 16px;
+    }
+
+    #footer {
+        padding: 10px 16px 20px 16px;
+    }
+
+    .kartu-periode,
+    .kartu-periode:nth-child(2n) {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .tab-menu button {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .form-grup,
+    .form-grup.penuh {
+        width: 97%;
+    }
+
+    .detail-isi {
+        padding: 0 18px 20px 18px;
+    }
+
+    .detail-nama,
+    .detail-status {
+        float: none;
+        text-align: left;
+    }
+
+    .detail-status {
+        margin-top: 12px;
+    }
+
+    ul.detail-info li {
+        width: 100%;
+    }
+
+    .detail-aksi .btn {
+        display: block;
+        width: 100%;
+        margin: 8px 0 0 0;
+        text-align: center;
+    }
+
+    .kartu-periode-mini {
+        width: 98%;
+        min-height: 0;
+    }
+
+    .pembimbing-kanan {
+        display: none;
+    }
+
+    .pembimbing-bawah {
+        display: block !important;
+    }
+
+    .aksi-form .btn {
+        display: block;
+        width: 100%;
+        margin: 8px 0 0 0;
+        text-align: center;
+    }
+
+    #toast {
+        left: 16px;
+        right: 16px;
+        max-width: none;
+    }
+
+    #toast.tampil {
+        bottom: 16px;
+    }
+}
+
+/* HP kecil */
+@media screen and (max-width: 420px) {
+    .ringkasan-gambar {
+        padding: 16px;
+    }
+
+    .ringkasan-isi h2 {
+        font-size: 19px;
+    }
+}

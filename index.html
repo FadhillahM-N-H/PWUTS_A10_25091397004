@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <!-- viewport: wajib agar tampilan responsive di HP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | SiMagang - Sistem Monitoring PKL</title>
+    <link rel="icon" type="image/svg+xml" href="img/logo-ikon-navy.svg">
+
+    <!-- Ikon Font Awesome 6.5.2 (versi yang sama dengan link CDN di materi CSS),
+         disimpan lokal di folder vendor/ agar tetap tampil tanpa internet -->
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+
+    <!-- External Style Sheet (font Poppins juga dimuat dari sini) -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========== SIDEBAR / NAVIGASI ========== -->
+    <aside id="sidebar">
+        <div class="brand">
+            <img src="img/logo-ikon-putih.svg" alt="Logo SiMagang" width="44" height="44">
+            <div>
+                <strong>SiMagang</strong>
+                <small>Sistem Monitoring PKL</small>
+            </div>
+        </div>
+
+        <p class="menu-judul">Menu Admin</p>
+        <nav>
+            <!-- href tetap diisi alamat halaman, tetapi kliknya ditangani Ajax di js/main.js -->
+            <ul class="menu">
+                <li><a href="pages/dashboard.html" class="menu-link" data-halaman="dashboard">
+                    <i class="fa-solid fa-house"></i> Dashboard</a></li>
+                <li><a href="pages/kelola-akun.html" class="menu-link" data-halaman="kelola-akun">
+                    <i class="fa-solid fa-users-gear"></i> Kelola Akun</a></li>
+                <li><a href="pages/periode-assignment.html" class="menu-link" data-halaman="periode-assignment">
+                    <i class="fa-solid fa-calendar-check"></i> Periode &amp; Assignment</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-bawah">
+            <button type="button" id="btnResetData" class="btn-sidebar" title="Kembalikan data contoh seperti semula">
+                <i class="fa-solid fa-rotate-left"></i> Reset Data Contoh
+            </button>
+            <button type="button" id="btnKeluar" class="btn-sidebar">
+                <i class="fa-solid fa-right-from-bracket"></i> Keluar
+            </button>
+        </div>
+    </aside>
+
+    <!-- lapisan gelap di belakang sidebar saat dibuka di HP -->
+    <div id="overlay"></div>
+
+    <!-- ========== AREA UTAMA ========== -->
+    <div id="utama">
+        <header id="header">
+            <button type="button" id="btnMenu" aria-label="Buka menu"><i class="fa-solid fa-bars"></i></button>
+            <h1 id="judulHalaman">Dashboard</h1>
+            <div class="profil">
+                <img src="img/avatar-admin.svg" alt="Foto profil admin" width="38" height="38">
+                <div class="profil-teks">
+                    <strong>Administrator</strong>
+                    <small>admin@simagang.ac.id</small>
+                </div>
+            </div>
+        </header>
+
+        <!-- Konten halaman dimuat ke sini menggunakan Ajax -->
+        <main id="konten">
+            <p class="memuat"><i class="fa-solid fa-spinner fa-spin"></i> Memuat halaman...</p>
+        </main>
+
+        <footer id="footer">
+            <p>&copy; 2026 SiMagang &middot; Kelompok 10 Pemrograman Web 2025A &middot; Modul Admin oleh Fadhillah Muhammad Nur Hafiz</p>
+        </footer>
+    </div>
+
+    <!-- Notifikasi kecil (toast) -->
+    <div id="toast"></div>
+
+    <!-- Library jQuery (lokal) lalu script modul -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/kelola-akun.js"></script>
+    <script src="js/tambah-akun.js"></script>
+    <script src="js/periode-assignment.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

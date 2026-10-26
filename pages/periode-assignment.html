@@ -1,0 +1,94 @@
+<!-- Item 2.c: Form Tambah Assignment, sesuai tabel magang di proposal (Bab 4.3.3)
+     Tata letak: form di kiri (tetap terlihat saat di-scroll), periode & daftar assignment di kanan -->
+
+<!-- ===== Kolom kiri: form ===== -->
+<div class="pa-kiri">
+    <section class="kartu kartu-form form-tempel" id="kartuFormAssignment">
+        <div class="kartu-judul">
+            <h2><i class="fa-solid fa-link"></i> Tambah Assignment</h2>
+            <p>Hubungkan mahasiswa dengan pembimbing magang, dosen, dan periode. Kolom bertanda <span style="color:#D93A3A">*</span> wajib diisi.</p>
+        </div>
+
+        <div class="ringkasan-salah" id="ringkasanSalahAssignment"></div>
+
+        <form id="formAssignment" action="server/simpan.json" method="post" novalidate>
+            <div class="form-baris">
+                <div class="form-grup penuh" id="grup-periode_id">
+                    <label for="periode_id">Periode Magang <span class="wajib">*</span></label>
+                    <select id="periode_id" name="periode_id"></select>
+                    <span class="pesan-salah"></span>
+                </div>
+                <div class="info-periode" id="infoPeriode"></div>
+            </div>
+
+            <div class="form-baris">
+                <div class="form-grup penuh" id="grup-mahasiswa_id">
+                    <label for="mahasiswa_id">Mahasiswa <span class="wajib">*</span></label>
+                    <select id="mahasiswa_id" name="mahasiswa_id"></select>
+                    <span class="petunjuk">Hanya akun mahasiswa yang aktif.</span>
+                    <span class="pesan-salah"></span>
+                </div>
+            </div>
+
+            <div class="form-baris">
+                <div class="form-grup" id="grup-pembimbing_id">
+                    <label for="pembimbing_id">Pembimbing <span class="wajib">*</span></label>
+                    <select id="pembimbing_id" name="pembimbing_id"></select>
+                    <span class="pesan-salah"></span>
+                </div>
+                <div class="form-grup" id="grup-dosen_id">
+                    <label for="dosen_id">Dosen <span class="wajib">*</span></label>
+                    <select id="dosen_id" name="dosen_id"></select>
+                    <span class="pesan-salah"></span>
+                </div>
+            </div>
+
+            <div class="form-baris">
+                <div class="form-grup penuh" id="grup-nama_perusahaan">
+                    <label for="nama_perusahaan">Perusahaan / Instansi <span class="wajib">*</span></label>
+                    <input type="text" id="nama_perusahaan" name="nama_perusahaan" maxlength="150" placeholder="contoh: PT Nusantara Data Solusi">
+                    <span class="pesan-salah"></span>
+                </div>
+            </div>
+
+            <div class="form-baris">
+                <div class="form-grup penuh" id="grup-divisi">
+                    <label for="divisi">Divisi / Bagian <span class="wajib">*</span></label>
+                    <input type="text" id="divisi" name="divisi" maxlength="100" placeholder="contoh: Data Engineering">
+                    <span class="pesan-salah"></span>
+                </div>
+            </div>
+
+            <div class="form-baris">
+                <div class="form-grup" id="grup-tanggal_mulai">
+                    <label for="tanggal_mulai">Mulai <span class="wajib">*</span></label>
+                    <input type="date" id="tanggal_mulai" name="tanggal_mulai">
+                    <span class="pesan-salah"></span>
+                </div>
+                <div class="form-grup" id="grup-tanggal_selesai">
+                    <label for="tanggal_selesai">Selesai <span class="wajib">*</span></label>
+                    <input type="date" id="tanggal_selesai" name="tanggal_selesai">
+                    <span class="pesan-salah"></span>
+                </div>
+                <p class="durasi" id="durasiMagang"></p>
+            </div>
+
+            <div class="aksi-form">
+                <button type="reset" class="btn btn-sekunder" id="btnBersihAssignment">Kosongkan</button>
+                <button type="submit" class="btn" id="btnSimpanAssignment"><i class="fa-solid fa-floppy-disk"></i> Simpan Assignment</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+<!-- ===== Kolom kanan: periode + daftar assignment per periode ===== -->
+<div class="pa-kanan">
+    <!-- kartu periode, bisa diklik untuk menyaring daftar -->
+    <section class="baris-periode" id="kartuPeriode"></section>
+    <br class="clearfloat">
+    <p class="teks-kecil petunjuk-periode" id="petunjukPeriode"></p>
+
+    <!-- daftar assignment dikelompokkan per periode -->
+    <div id="grupAssignment"></div>
+</div>
+<br class="clearfloat">

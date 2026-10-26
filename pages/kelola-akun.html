@@ -1,0 +1,44 @@
+<!-- Item 2.b: halaman interaktif Kelola Akun (dimuat dengan Ajax)
+     Tata letak: daftar akun di kiri, detail akun yang dipilih di kanan -->
+
+<!-- ===== Kolom kiri: daftar akun ===== -->
+<div class="akun-kiri">
+    <section class="kartu daftar-akun-kartu">
+        <div class="cari">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="inputCari" placeholder="Cari nama, email, nomor induk...">
+        </div>
+
+        <!-- Tombol filter role (berisi jumlah akun) -->
+        <div class="filter-role" id="filterRole"></div>
+
+        <select id="filterStatus" aria-label="Filter status">
+            <option value="">Semua status</option>
+            <option value="aktif">Hanya akun aktif</option>
+            <option value="nonaktif">Hanya akun nonaktif</option>
+        </select>
+
+        <p class="info-jumlah" id="infoJumlah"></p>
+        <ul class="daftar-akun" id="daftarAkun"></ul>
+
+        <a href="pages/tambah-akun.html" class="btn btn-penuh link-ajax" data-halaman="tambah-akun">
+            <i class="fa-solid fa-user-plus"></i> Tambah Akun</a>
+    </section>
+</div>
+
+<!-- ===== Kolom kanan: detail akun ===== -->
+<div class="akun-kanan">
+    <section class="kartu detail-akun" id="detailAkun"></section>
+</div>
+<br class="clearfloat">
+
+<!-- Modal hasil reset password -->
+<div class="modal-latar" id="modalReset">
+    <div class="modal">
+        <h3><i class="fa-solid fa-key"></i> Password Direset</h3>
+        <p id="modalResetNama"></p>
+        <span class="password-sementara" id="passwordSementara"></span>
+        <p class="teks-kecil">Berikan password sementara ini ke pengguna dan minta ia menggantinya setelah login.</p>
+        <button type="button" class="btn" id="btnTutupModal">Mengerti</button>
+    </div>
+</div>

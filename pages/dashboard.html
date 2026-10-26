@@ -1,0 +1,80 @@
+<!-- Potongan halaman: dimuat ke index.html dengan Ajax -->
+
+<!-- ===== Kolom kiri: kartu ringkasan ===== -->
+<div class="dash-kiri">
+    <section class="kartu kartu-ringkasan">
+        <div class="ringkasan-gambar">
+            <img src="img/ilustrasi-dashboard.svg" alt="Ilustrasi dashboard monitoring magang">
+        </div>
+
+        <div class="ringkasan-isi">
+            <p class="tanggal" id="tanggalHariIni"></p>
+            <h2 id="sapaan">Halo, Administrator!</h2>
+
+            <ul class="daftar-angka">
+                <li><i class="fa-solid fa-user-graduate ikon biru"></i>
+                    <span class="label">Mahasiswa aktif</span><strong id="jmlMahasiswa">0</strong></li>
+                <li><i class="fa-solid fa-briefcase ikon kuning"></i>
+                    <span class="label">Pembimbing aktif</span><strong id="jmlPembimbing">0</strong></li>
+                <li><i class="fa-solid fa-chalkboard-user ikon hijau"></i>
+                    <span class="label">Dosen aktif</span><strong id="jmlDosen">0</strong></li>
+                <li><i class="fa-solid fa-link ikon ungu"></i>
+                    <span class="label">Assignment berjalan</span><strong id="jmlAssignment">0</strong></li>
+            </ul>
+
+            <!-- Komposisi akun: lebar tiap warna dihitung dari jumlah akun -->
+            <div class="komposisi">
+                <div class="komposisi-judul">
+                    <b>Komposisi Akun</b>
+                    <span id="totalAkun">0 akun</span>
+                </div>
+                <div class="bar-komposisi" id="barKomposisi"></div>
+                <ul class="legenda" id="legendaKomposisi"></ul>
+            </div>
+
+            <a href="pages/periode-assignment.html" class="btn btn-kuning btn-penuh link-ajax" data-halaman="periode-assignment">
+                <i class="fa-solid fa-plus"></i> Tambah Assignment</a>
+        </div>
+    </section>
+</div>
+
+<!-- ===== Kolom kanan: periode aktif + tab daftar ===== -->
+<div class="dash-kanan">
+    <section id="periodeAktif"></section>
+    <br class="clearfloat">
+
+    <section class="kartu">
+        <div class="tab-menu">
+            <button type="button" class="tab aktif" data-panel="panelTerbaru">Assignment Terbaru</button>
+            <button type="button" class="tab" data-panel="panelBelum">Belum Ditugaskan
+                <span class="jumlah-merah" id="jmlBelum">0</span></button>
+        </div>
+
+        <div class="tab-panel aktif" id="panelTerbaru">
+            <div class="tabel-wrap">
+                <table class="tabel">
+                    <thead>
+                        <tr><th>Mahasiswa</th><th>Tempat Magang</th><th>Periode</th><th>Status</th></tr>
+                    </thead>
+                    <tbody id="tabelTerbaru"></tbody>
+                </table>
+            </div>
+            <p class="teks-kecil" style="margin:12px 0 0 0">
+                <a href="pages/periode-assignment.html" class="link-ajax" data-halaman="periode-assignment">Lihat semua assignment <i class="fa-solid fa-arrow-right"></i></a>
+            </p>
+        </div>
+
+        <div class="tab-panel" id="panelBelum">
+            <p class="teks-kecil" style="margin:0 0 10px 0">Mahasiswa aktif yang belum ditugaskan di periode aktif mana pun.</p>
+            <div class="tabel-wrap">
+                <table class="tabel">
+                    <thead>
+                        <tr><th>Mahasiswa</th><th>Kontak</th><th>Aksi</th></tr>
+                    </thead>
+                    <tbody id="tabelBelum"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+<br class="clearfloat">
